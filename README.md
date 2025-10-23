@@ -22,7 +22,8 @@ curl -v "http://localhost:9099/chatHub/negotiate?negotiateVersion=1" --data ""
 < Date: Thu, 23 Oct 2025 14:04:42 GMT
 < Server: Kestrel
 <
-{"negotiateVersion":1,"connectionId":"O8N6_5VUkHfrNQxyubSBdg","connectionToken":"oDPrSzh08JlYgypVW0888g","availableTransports":[{"transport":"WebSockets","transferFormats":["Text","Binary"]},{"transport":"ServerSentEvents","transferFormats":["Text"]},{"transport":"LongPolling","transferFormats":["Text","Binary"]}]}* Connection #0 to host localhost left intact```
+{"negotiateVersion":1,"connectionId":"O8N6_5VUkHfrNQxyubSBdg","connectionToken":"oDPrSzh08JlYgypVW0888g","availableTransports":[{"transport":"WebSockets","transferFormats":["Text","Binary"]},{"transport":"ServerSentEvents","transferFormats":["Text"]},{"transport":"LongPolling","transferFormats":["Text","Binary"]}]}* Connection #0 to host localhost left intact
+```
 
 However, if you publish the app to a folder and then host it in IIS (make a new AppPool with Unmanaged Code, and host it at http localhost:9098, and run:
 
@@ -51,3 +52,4 @@ curl -v "http://localhost:9098/chatHub/negotiate?negotiateVersion=1" --data ""
 ```
 
 Deleting the `<PackageReference Include="Microsoft.AspNetCore.Connections.Abstractions" Version="9.0.0" />` from WebApplication1.csproj makes it so the IIS call also produces a valid response. This should not be necessary, the most up to date version of the package should work.
+
