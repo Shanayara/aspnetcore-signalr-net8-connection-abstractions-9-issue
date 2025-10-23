@@ -51,5 +51,8 @@ curl -v "http://localhost:9098/chatHub/negotiate?negotiateVersion=1" --data ""
 * Connection #0 to host localhost left intact
 ```
 
+You see IIS responds with status 200 OK, but there is no content!
+
 Deleting the `<PackageReference Include="Microsoft.AspNetCore.Connections.Abstractions" Version="9.0.0" />` from WebApplication1.csproj makes it so the IIS call also produces a valid response. This should not be necessary, the most up to date version of the package should work.
+
 
